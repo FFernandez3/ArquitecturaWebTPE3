@@ -1,4 +1,4 @@
-package entity;
+package domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,9 +10,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Career implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +24,7 @@ public class Career implements Serializable {
 	@OneToMany(mappedBy = "student")
 	private List<StudentCareer> students;
 
-	public Career() {
-		super();
-	}
+	
 
 	public Career(String name) {
 		super();

@@ -1,25 +1,34 @@
-package entity;
+package domain;
 
 import java.io.Serializable;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
+@Data
 @Entity
+@NoArgsConstructor
 public class StudentCareer implements Serializable {
-	@Id
-	@ManyToOne(cascade = CascadeType.MERGE)
-	// @MapsId("id")
+	
+	@EmbeddedId
+	private StudentCareerPK id;
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@MapsId("id")
 	@JoinColumn(name = "career", referencedColumnName = "id")
 	private Career career;
 
 	@Id
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@MapsId("dni")
 	@JoinColumn(name = "student", referencedColumnName = "dni")
 	private Student student;
 
@@ -30,9 +39,7 @@ public class StudentCareer implements Serializable {
 	@Column(nullable = false)
 	private boolean isGraduated;
 
-	public StudentCareer() {
-		super();
-	}
+	
 
 	public StudentCareer(Career career, Student student, Integer graduationYear, Integer entryYear,
 			boolean isGraduated) {

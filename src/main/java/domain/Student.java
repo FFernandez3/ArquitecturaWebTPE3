@@ -1,9 +1,10 @@
-package entity;
+package domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -27,7 +28,7 @@ public class Student implements Serializable{
 	private Long studentId;
 	@Column(nullable=false)
 	private String city;
-	@OneToMany(mappedBy="career")
+	@OneToMany(mappedBy="career", cascade = CascadeType.PERSIST)
 	private List<StudentCareer>careers;
 	
 	

@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.EntityManager;
 
+//no tiene uso despues borrarlas
 public class BaseJPARepository<Entity, ID extends Serializable> implements Repository<Entity, ID> {
 	EntityManager entityManager;
 	Class<Entity> entityClass;
