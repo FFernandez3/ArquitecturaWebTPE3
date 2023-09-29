@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
+
 @Data
+
 @JsonIgnoreProperties( ignoreUnknown = true )
 public class CareerReportDTO {
     private String careerName;
@@ -29,9 +31,25 @@ public class CareerReportDTO {
 		this.graduates = graduates;
 		this.registered = registered;
 	}
+	
+	
+
+    public Integer getYears() {
+		return years;
+	}
 
 
-    public String getCareerName() {
+	public BigInteger getRegistered() {
+		return registered;
+	}
+
+
+	public BigInteger getGraduates() {
+		return graduates;
+	}
+
+
+	public String getCareerName() {
         return careerName;
     }
 

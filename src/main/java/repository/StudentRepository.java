@@ -21,7 +21,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 			+ " WHERE s.genre lIKE :genre")
 	List<StudentDTO> findBy(char genre);
 	
-	@Query("SELECT s.dni, s.name, s.surname, s.genre, s.age, s.studentId, s.city "
+@Query("SELECT s.dni, s.name, s.surname, s.genre, s.age, s.studentId, s.city "
 			+ "FROM Student s WHERE s.studentId = :studentId")
 	StudentDTO findBy(Long studentId);
  //el insert (save) lo vamos a pedir directo en el service al JPARepository

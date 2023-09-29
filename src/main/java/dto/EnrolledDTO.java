@@ -25,7 +25,7 @@ public class EnrolledDTO {
         this.studentName = studentName;
         this.city = city;
     }
-    //constructor protected??
+    
     public EnrolledDTO(Integer careerId, String careerName, Long quantity) {
         super();
         this.careerId = careerId;

@@ -18,11 +18,10 @@ import dto.EnrolledDTO;
 public interface StudentCareerRepository extends JpaRepository<StudentCareer, Career> {
 	//el insert (save) lo vamos a pedir directo en el service al JPARepository
 	
-	@Query("SELECT c.id, c.name, s.name, s.city, COUNT(c.id) AS quantity FROM Career c "
+	@Query("SELECT c.id, c.name, COUNT(c.id) "
+			+ "AS quantity FROM Career c "
 			+ "JOIN StudentCareer sc ON c.id = sc.career"
-			+ " JOIN Student s ON s.dni = sc.student "
-			+ "GROUP BY c.name "
-			+ "ORDER BY quantity")
+			+ "  GROUP BY c.name ORDER BY quantity")
 	List<EnrolledDTO>getCareersOrderByQuantity();
 	
 	@Query("SELECT \r\n" + "    c.career_name AS nombre_carrera,\r\n"

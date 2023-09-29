@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import domain.Career;
+import domain.Student;
 import dto.EnrolledDTO;
 import lombok.RequiredArgsConstructor;
 import repository.CareerRepository;
@@ -16,9 +17,13 @@ public class CareerServiceImpl /*implements CareerService*/{
 	//private repositorio
 	private CareerRepository careerRepository;
 	
-	//poner el save
-	public void save (Career c) {
-		
+	public Career save(Career entity) throws Exception{
+		try {
+			return this.careerRepository.save(entity);
+		}
+		catch(Exception e) {
+			throw new Exception(e.getMessage());
+		}		
 	}
 	
 	public List<EnrolledDTO> getStudentsByCarrerAndCity(String careerName, String city){
