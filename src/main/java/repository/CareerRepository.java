@@ -15,5 +15,6 @@ public interface CareerRepository extends JpaRepository<Career, Integer> {
 @Query("SELECT c.id, c.name, s.name, s.city FROM Student s JOIN StudentCareer sc ON s.dni = "
 		+ "sc.student JOIN Career c ON sc.career = c.id WHERE c.name = :careerName AND s.city = :city")
 List<EnrolledDTO> getStudentsByCarrerAndCity(String careerName, String city);
+//el insert (save) lo vamos a pedir directo en el service al JPARepository
 
 }

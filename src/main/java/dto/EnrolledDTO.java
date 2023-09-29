@@ -1,5 +1,11 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.Data;
+
+@Data
+@JsonIgnoreProperties( ignoreUnknown = true )
 public class EnrolledDTO {
     
     private Integer careerId;
@@ -19,7 +25,7 @@ public class EnrolledDTO {
         this.studentName = studentName;
         this.city = city;
     }
-
+    //constructor protected??
     public EnrolledDTO(Integer careerId, String careerName, Long quantity) {
         super();
         this.careerId = careerId;
